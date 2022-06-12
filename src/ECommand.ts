@@ -1,4 +1,4 @@
-import { CommandModule as YargsCommand } from 'yargs'
+import yargs, { CommandModule as YargsCommand } from 'yargs'
 import { isOptionSymbol, isPositonalSymbol } from './common'
 import { EOption } from './EOption'
 import { EPositional } from './EPositional'
@@ -15,6 +15,8 @@ export abstract class ECommand {
   static deprecated?: string | boolean
   // subcommands of this command
   static subcommands?: Array<ECommand | YargsCommand>
+  // extra builder
+  static extraBuilder: (yargs: yargs.Argv) => yargs.Argv
 
   abstract run(): Promise<void> | void
 
@@ -84,6 +86,14 @@ export abstract class ECommand {
             this.optionPairs.push([k, name])
           }
         })
+
+        // auto help
+        yargs = yargs.help()
+
+        // custom builder
+        if (this.C.extraBuilder) {
+          yargs = this.C.extraBuilder(yargs)
+        }
 
         return yargs
       },

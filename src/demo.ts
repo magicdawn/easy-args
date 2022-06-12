@@ -3,7 +3,8 @@ import { ECommand } from './ECommand'
 import { EOption } from './EOption'
 
 class TeaCommand extends ECommand {
-  static command = 'tea <...files>'
+  // static command = 'tea <files..>'
+  static command = 'tea'
   static aliases?: string | string[] = 't'
   static describe?: string = 'a tea command'
 
@@ -19,21 +20,20 @@ class TeaCommand extends ECommand {
   files = ECommand.positionalString('files', {
     alias: 'f',
     desc: 'files to include',
-    array: true,
-    demandOption: true,
   })
 
   async run() {
     const { yes, quality } = this
     console.log(yes, quality)
     console.log(this.files)
-    throw new Error('Method not implemented.')
   }
 }
 
+//
 yargs
   //
   .scriptName('some-demo')
   .command(new TeaCommand().transform())
   .demandCommand()
+  .alias({ h: 'help', v: 'version' }) // just works fine with this
   .help().argv
