@@ -32,6 +32,9 @@
     "url": "https://github.com/magicdawn/easy-yargs/issues"
   },
   "homepage": "https://github.com/magicdawn/easy-yargs#readme",
+  "dependencies": {
+    "yargs": "^17.5.1"
+  },
   "devDependencies": {
     "@magicdawn/eslint-config": "latest",
     "@magicdawn/prettier-config": "^0.0.2",
@@ -41,7 +44,7 @@
     "@types/yargs": "^17.0.10",
     "codecov": "^3.3.0",
     "eslint": "^6.8.0",
-    "husky": "^8.0.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.1",
     "mocha": "^6.1.4",
     "nyc": "^14.0.0",
@@ -56,11 +59,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,less,jsx,ts,tsx}": [
+    "*.{js,less,jsx,ts,tsx,md,json}": [
       "prettier --write"
     ]
-  },
-  "dependencies": {
-    "yargs": "^17.5.1"
   }
 }
