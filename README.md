@@ -17,8 +17,16 @@ $ npm i easy-yargs --save
 ## API
 
 ```js
-const easyYargs = require('easy-yargs');
+const easyYargs = require('easy-yargs')
 ```
+
+## Why
+
+- commander / yargs / cac lose options type in `commander.action` / `yargs.handler`
+- clipanion has many serious bugs
+  - https://github.com/arcanis/clipanion/issues/123
+  - https://github.com/arcanis/clipanion/issues/101
+  - more
 
 ## Changelog
 
