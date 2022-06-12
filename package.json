@@ -1,0 +1,66 @@
+{
+  "name": "easy-yargs",
+  "version": "0.0.1",
+  "description": "type-safe yargs usage",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha",
+    "test-cover": "nyc --reporter=lcov --reporter=text mocha",
+    "report-cover": "codecov",
+    "gen-readme": "swig render ./readme/readme.md > README.md && prettier --write README.md",
+    "build": "rm -rf lib; rm tsconfig.tsbuildinfo; tsc",
+    "prepublishOnly": "npm run build",
+    "start": "ts-node ./src/index.ts",
+    "start:debug": "node --inspect-brk -r ts-node/register ./src/index.ts",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/magicdawn/easy-yargs.git"
+  },
+  "keywords": [
+    "yargs",
+    "typescript",
+    "ts",
+    "ts-yargs",
+    "typescript-yargs",
+    "clipanion"
+  ],
+  "author": "magicdawn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/magicdawn/easy-yargs/issues"
+  },
+  "homepage": "https://github.com/magicdawn/easy-yargs#readme",
+  "devDependencies": {
+    "@magicdawn/eslint-config": "latest",
+    "@magicdawn/prettier-config": "^0.0.2",
+    "@swc/core": "^1.2.198",
+    "@swc/helpers": "^0.3.17",
+    "@types/node": "^17.0.42",
+    "@types/yargs": "^17.0.10",
+    "codecov": "^3.3.0",
+    "eslint": "^6.8.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^13.0.1",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0",
+    "prettier": "^2.6.2",
+    "should": "^13.2.3",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,less,jsx,ts,tsx}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "yargs": "^17.5.1"
+  }
+}
